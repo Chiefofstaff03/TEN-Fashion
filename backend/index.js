@@ -1,4 +1,3 @@
-
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
@@ -20,11 +19,14 @@ const CONNECTION_URL =
 app.use(
   cors({
     origin: function (origin, callback) {
-      const allowedOrigins = ["http://localhost:5173"];
+      const allowedOrigins = [
+        "http://localhost:5173",
+        "https://ten-fashion-five.vercel.app",
+      ];
       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true); 
+        callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS")); 
+        callback(new Error("Not allowed by CORS"));
       }
     },
     credentials: true,
@@ -40,17 +42,15 @@ app.get("/", (req, res) => {
   res.send("Welcome to Ten Fashion!");
 });
 
-app.use("/products", productRoutes);
-app.use("/contact", contactRoute);
+app.use("/", productRoutes);
+app.use("/", contactRoute);
 app.use("/api/auth", authRoutes);
 app.use("/api/orders", orderRoutes);
-app.use("/wishlist", wishlistRoutes);
+app.use("/", wishlistRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
 
 // const express = require("express");
 // const cors = require("cors");
