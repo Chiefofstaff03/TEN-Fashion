@@ -9,7 +9,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     axios
-      .get("https://ten-fashion.onrender.com/api/products")
+      .get("https://ten-fashion-m1gv.onrender.com/api/products")
       .then((response) => setProducts(response.data))
       .catch((error) => console.error("Error fetching products:", error));
   }, []);

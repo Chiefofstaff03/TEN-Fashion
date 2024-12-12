@@ -15,14 +15,17 @@ function LoginForm() {
     e.preventDefault();
     setLoading(true);
     try {
-      const responce = await fetch("https://ten-fashion.onrender.com/api/auth/login", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const responce = await fetch(
+        "https://ten-fashion-m1gv.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
       if (!responce.ok) {
         throw new Error("failed to sign in User");
       }

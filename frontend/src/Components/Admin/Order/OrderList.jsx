@@ -9,7 +9,9 @@ const OrderList = () => {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const response = await axios.get("https://ten-fashion.onrender.com/api/orders/all");
+      const response = await axios.get(
+        "https://ten-fashion-m1gv.onrender.com/api/orders/all"
+      );
       setOrders(response.data);
 
       // Initialize status for each order
@@ -35,7 +37,7 @@ const OrderList = () => {
 
     try {
       await axios.put(
-        `https://ten-fashion.onrender.com/api/orders/${orderId}`,
+        `https://ten-fashion-m1gv.onrender.com/api/orders/${orderId}`,
         { status: newStatus },
         {
           headers: {

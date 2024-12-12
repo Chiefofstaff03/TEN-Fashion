@@ -20,7 +20,7 @@ function SearchedProducts() {
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const searchQuery =  queryParams.get("query") || "";
+  const searchQuery = queryParams.get("query") || "";
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   const handleCheckboxChange = () => {
@@ -30,7 +30,7 @@ function SearchedProducts() {
   const handleFilterClick = (basis, titlefont, pricefont) => {
     setWidth(basis);
     setTitleFont(titlefont);
-    setPriceFont(pricefont)
+    setPriceFont(pricefont);
   };
 
   const toggleSidebar = () => {
@@ -59,7 +59,9 @@ function SearchedProducts() {
     // Fetch data from the API
     const fetchProducts = async () => {
       try {
-        const response = await fetch("https://ten-fashion.onrender.com/api/products");
+        const response = await fetch(
+          "https://ten-fashion-m1gv.onrender.com/api/products"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }
@@ -73,8 +75,8 @@ function SearchedProducts() {
             product.category.toLowerCase().includes(query)
           );
         });
-        setFilteredProducts(filtered)
-        
+        setFilteredProducts(filtered);
+
         // setSortedProducts(filtered); // Initialize sorted products with fetched products
       } catch (err) {
         setError(err.message);
@@ -86,9 +88,9 @@ function SearchedProducts() {
 
   const navigate = useNavigate();
 
-    const handleViewProduct = (id) => {
-        navigate(`/product/${id}`);
-    };
+  const handleViewProduct = (id) => {
+    navigate(`/product/${id}`);
+  };
 
   return (
     <div className="w-full mb-10">
@@ -119,19 +121,19 @@ function SearchedProducts() {
               src={filterIcon1}
               alt="Filter Icon"
               className="cursor-pointer"
-              onClick={() => handleFilterClick("41rem","1.6rem","1.5rem")} // 2 items per row
+              onClick={() => handleFilterClick("41rem", "1.6rem", "1.5rem")} // 2 items per row
             />
             <img
               src={filterIcon2}
               alt="Filter Icon"
               className="md:hidden block lg:block cursor-pointer"
-              onClick={() => handleFilterClick("27rem","1.4rem","1.3rem")} // 3 items per row
+              onClick={() => handleFilterClick("27rem", "1.4rem", "1.3rem")} // 3 items per row
             />
             <img
               src={filterIcon3}
               alt="Filter Icon"
               className="cursor-pointer"
-              onClick={() => handleFilterClick("20rem","1.2rem","1.1rem")} // 4 items per row
+              onClick={() => handleFilterClick("20rem", "1.2rem", "1.1rem")} // 4 items per row
             />
           </div>
           {/* <label className="flex items-center space-x-2 cursor-pointer">
@@ -170,7 +172,7 @@ function SearchedProducts() {
       {/* {isSidebarOpen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex">
           {/* Sidebar on the right */}
-          {/* <div className="w-[15%] bg-white dark:bg-gray-800 h-full p-4 shadow-lg max-lg:w-[20%] max-md:w-[30%] max-sm:w-[50%]">
+      {/* <div className="w-[15%] bg-white dark:bg-gray-800 h-full p-4 shadow-lg max-lg:w-[20%] max-md:w-[30%] max-sm:w-[50%]">
             <button
               onClick={toggleSidebar}
               className="my-4 text-gray-600 dark:text-white hover:text-gray-900 dark:hover:text-white"
@@ -197,7 +199,7 @@ function SearchedProducts() {
             </ol>
           </div>
           {/* Click outside to close */}
-          {/* <div className="flex-grow" onClick={toggleSidebar}></div>
+      {/* <div className="flex-grow" onClick={toggleSidebar}></div>
         </div>
       )} */}
 
@@ -210,13 +212,22 @@ function SearchedProducts() {
         ) : filteredProducts.length > 0 ? (
           filteredProducts.map((data) => (
             <div key={data._id} className="flex flex-col">
-              <img onClick={() => handleViewProduct(data._id)} style={{ width: `${width}` }}
+              <img
+                onClick={() => handleViewProduct(data._id)}
+                style={{ width: `${width}` }}
                 className="h-[100%] object-cover rounded-lg mb-2 hover:opacity-80 cursor-pointer"
                 src={data.images}
                 alt={data.productTitle}
               />
-              <h1 className="font-semibold ml-2" style={{fontSize: `${titleFont}`}}>{data.productTitle}</h1>
-              <h1 className="ml-2" style={{fontSize: `${priceFont}`}}>₹{data.price}.00</h1>
+              <h1
+                className="font-semibold ml-2"
+                style={{ fontSize: `${titleFont}` }}
+              >
+                {data.productTitle}
+              </h1>
+              <h1 className="ml-2" style={{ fontSize: `${priceFont}` }}>
+                ₹{data.price}.00
+              </h1>
             </div>
           ))
         ) : (

@@ -11,7 +11,9 @@ const Queries = () => {
   useEffect(() => {
     const fetchQueries = async () => {
       try {
-        const response = await axios.get("https://ten-fashion.onrender.com/contactForm");
+        const response = await axios.get(
+          "https://ten-fashion-m1gv.onrender.com/contactForm"
+        );
         setQueries(response.data);
       } catch (err) {
         console.error("Error fetching queries:", err);

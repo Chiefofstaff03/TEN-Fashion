@@ -10,7 +10,9 @@ const ProductList = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get("https://ten-fashion.onrender.com/api/products");
+      const response = await axios.get(
+        "https://ten-fashion-m1gv.onrender.com/api/products"
+      );
       setProducts(response.data);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -26,7 +28,9 @@ const ProductList = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
-        await axios.delete(`https://ten-fashion.onrender.com/api/product/${id}`);
+        await axios.delete(
+          `https://ten-fashion-m1gv.onrender.com/api/product/${id}`
+        );
         console.log(`Product with id: ${id} is deleted`);
         fetchProducts();
       } catch (error) {

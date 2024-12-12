@@ -81,7 +81,7 @@ function ProductDetails() {
       if (!prodId) return;
       try {
         const response = await axios.get(
-          `https://ten-fashion.onrender.com/api/product/${prodId}`
+          `https://ten-fashion-m1gv.onrender.com/api/product/${prodId}`
         );
         setProductData([response.data]);
       } catch (error) {
@@ -96,7 +96,7 @@ function ProductDetails() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://ten-fashion.onrender.com/api/products`
+          `https://ten-fashion-m1gv.onrender.com/api/products`
         );
         setAllProductData(response.data);
       } catch (error) {

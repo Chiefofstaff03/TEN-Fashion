@@ -59,7 +59,7 @@ const ProductEdit = () => {
     const fetchProduct = async () => {
       try {
         const response = await axios.get(
-          `https://ten-fashion.onrender.com/api/product/${id}`
+          `https://ten-fashion-m1gv.onrender.com/api/product/${id}`
         );
         setFormData(response.data);
       } catch (error) {
@@ -105,11 +105,15 @@ const ProductEdit = () => {
         form.append("images", formData.image);
       }
 
-      await axios.put(`https://ten-fashion.onrender.com/api/product/${id}`, form, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.put(
+        `https://ten-fashion-m1gv.onrender.com/api/product/${id}`,
+        form,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       alert("Product updated successfully!");
       navigate("/admin/products");
     } catch (error) {
